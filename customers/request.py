@@ -1,31 +1,27 @@
 CUSTOMERS =  [
         {
             "id": 1,
-            "name": "Santa Clause",
-            "address": "2076 N Pole Blvd",
-            "email": "hollyjolly@clause.com",
-            "password": "gifts"
+            "name": "Roy Rogers McFreely",
+            "address": "123 Fake St",
+            "email": "roy@rogers.com",
         },
         {
             "id": 2,
-            "name": "Mr. President",
-            "address": "1600 Penn Ave",
-            "email": "theone@gov.gov",
-            "password": "idk"
+            "name": "Ricky Spanish",
+            "address": "456 Fake St",
+            "email": "ricky@spanish.com"
         },
         {
             "id": 3,
-            "name": "Marry Poppins",
-            "address": "1 is the Loneliest Ave",
-            "email": "letsfly@imagine.com",
-            "password": "raindrops"
+            "name": "Lazlo Morphine",
+            "address": "789 Fake St",
+            "email": "laszlo@morphine.com",
         },
         {
             "id": 4,
-            "name": "Boba Fett",
-            "address": "111 Camino Station",
-            "email": "thehunter@bounty.com",
-            "password": "blaster"
+            "name": "Genevieve Vavance",
+            "address": "321 Fake St",
+            "email": "gen@vavance.com"
         }
     ]
 
@@ -34,10 +30,10 @@ def get_all_customers():
 
 # Function with a single parameter
 def get_single_customer(id):
-    # Variable to hold the found animal, if it exists
+    # Variable to hold the found customer, if it exists
     requested_customer = None
 
-    # Iterate the ANIMALS list above. Very similar to the
+    # Iterate the CUSTOMERS list above. Very similar to the
     # for..of loops you used in JavaScript.
     for customer in CUSTOMERS:
         # Dictionaries in Python use [] notation to find a key
@@ -49,17 +45,42 @@ def get_single_customer(id):
 
 # Function to create customer
 def create_customer(customer):
-    # Get the id value of the last animal in the list
+    # Get the id value of the last customer in the list
     max_id = CUSTOMERS[-1]["id"]
 
     # Add 1 to whatever that number is
     new_id = max_id + 1
 
-    # Add an `id` property to the animal dictionary
+    # Add an `id` property to the customer dictionary
     customer["id"] = new_id
 
-    # Add the animal dictionary to the list
+    # Add the customer dictionary to the list
     CUSTOMERS.append(customer)
 
     # Return the dictionary with `id` property added
     return customer
+
+# Function to delete customer
+def delete_customer(id):
+    # Initial -1 value for customer index, in case one isn't found
+    customer_index = -1
+
+    # Iterate the CUSTOMERS list, but use enumerate() so that you
+    # can access the index value of each item
+    for index, customer in enumerate(CUSTOMERS):
+        if customer["id"] == id:
+            # Found the customer. Store the current index.
+            customer_index = index
+
+    # If the customer was found, use pop(int) to remove it from list
+    if customer_index >= 0:
+        CUSTOMERS.pop(customer_index)
+
+def update_customer(id, new_customer):
+    # Iterate the CUSTOMERS list, but use enumerate() so that
+    # you can access the index value of each item.
+    for index, customer in enumerate(CUSTOMERS):
+        if customer["id"] == id:
+            # Found the customer. Update the value.
+            CUSTOMERS[index] = new_customer
+            break

@@ -27,7 +27,7 @@ def get_single_location(id):
 
     return requested_location
 
-# Function to create animal
+# Function to create location
 def create_location(location):
     # Get the id value of the last animal in the list
     max_id = LOCATIONS[-1]["id"]

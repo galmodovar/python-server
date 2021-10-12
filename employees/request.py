@@ -43,7 +43,7 @@ def get_single_employee(id):
 
     return requested_employee
 
-# Function to create animal
+# Function to create employee
 def create_employee(employee):
     # Get the id value of the last animal in the list
     max_id = EMPLOYEES[-1]["id"]

@@ -1,11 +1,13 @@
 LOCATIONS = [
     {
       "id": 1,
-      "name": "Nashville North"
+      "name": "Nashville North",
+      "address": "123 North"
     },
     {
       "id": 2,
-      "name": "Nashville South"
+      "name": "Nashville South",
+      "address": "123 South"
     }
 ]
 

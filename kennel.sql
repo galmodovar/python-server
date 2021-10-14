@@ -57,6 +57,9 @@ INSERT INTO `Animal` VALUES (null, "Falafel", "Treatment", "Siamese", 4, 2);
 INSERT INTO `Animal` VALUES (null, "Doodles", "Kennel", "Poodle", 3, 1);
 INSERT INTO `Animal` VALUES (null, "Daps", "Kennel", "Boxer", 2, 2);
 
+
+
+
 -- Get only the animal rows where the `id` field value is 3
 SELECT
     a.id,
@@ -83,3 +86,30 @@ SELECT
     a.address
 FROM location a
 WHERE a.id = 2
+
+SELECT
+            c.id,
+            c.name,
+            c.address,
+            c.email,
+            c.password
+        FROM customer c
+        WHERE c.email = 'jenna@solis.com'
+
+SELECT
+            a.id,
+            a.name,
+            a.breed,
+            a.status,
+            a.location_id,
+            a.customer_id
+        FROM animal a
+        WHERE a.location_id = 1
+
+SELECT
+            a.id,
+            a.name,
+            a.address,
+            a.location_id
+        FROM employee a
+        WHERE a.location_id = 1

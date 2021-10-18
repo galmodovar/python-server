@@ -113,3 +113,31 @@ SELECT
             a.location_id
         FROM employee a
         WHERE a.location_id = 1
+
+SELECT
+    a.id,
+    a.name,
+    a.breed,
+    a.status,
+    a.location_id,
+    a.customer_id,
+    l.name location_name,
+    l.address location_address,
+    b.name customer_name,
+    b.address customer_address
+FROM Animal a
+JOIN Location l
+    ON l.id = a.location_id
+JOIN Customer b
+    ON b.id = a.customer_id
+
+SELECT
+    a.id,
+    a.name,
+    a.address,
+    a.location_id,
+    l.name location_name,
+    l.address location_address
+FROM Employee a
+JOIN Location l
+    ON l.id = a.location_id

@@ -190,8 +190,6 @@ class HandleRequests(BaseHTTPRequestHandler):
     def do_PUT(self):
         """Handles PUT requests to the server
         """
-        # Set a 204 response code
-        self._set_headers(204)
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
         post_body = json.loads(post_body)
@@ -199,26 +197,27 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Parse the URL
         (resource, id) = self.parse_url(self.path)
 
+        success = False
+
         # Delete a single animal from the list
         if resource == "animals":
-            update_animal(id, post_body)
-            # Encode the new animal and send in response
-            self.wfile.write("".encode())
+            success = update_animal(id, post_body)
         # Delete a single customer from the list
         elif resource == "customers":
-            update_customer(id, post_body)
-            # Encode the new customer and send in response
-            self.wfile.write("".encode())
+            success = update_customer(id, post_body)
         # Delete a single employee from the list
         elif resource == "employees":
-            update_employee(id, post_body)
-            # Encode the new employee and send in response
-            self.wfile.write("".encode())
+            success = update_employee(id, post_body)
         # Delete a single location from the list
         elif resource == "locations":
-            update_location(id, post_body)
-            # Encode the new location and send in response
-            self.wfile.write("".encode())
+            success = update_location(id, post_body)
+        
+        if success:
+            self._set_headers(204)
+        else:
+            self._set_headers(404)
+
+        self.wfile.write("".encode())
 
     # Here's a method on the class that overrides the parent's method.
     # It handles any DELETE request.
